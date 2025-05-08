@@ -1,1 +1,25 @@
+import java.util.Scanner;
 
+public class script {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("Input up to 8 binary digits: ");
+        try {
+            String binaryInput = scnr.next();
+            if (binaryInput.length() > 8) {
+                throw new IllegalArgumentException("Input must be less than or equal to 8 digits");
+            }
+            for (int i = 0; i < binaryInput.length(); i++) {
+                char letter = binaryInput.charAt(i);
+                if (letter != '1' && letter != '0') {
+                    throw new IllegalArgumentException("Input must contain only 1s and 0s");
+                }
+            }
+            System.out.println("You entered: " + binaryInput);
+        } catch (IllegalArgumentException error) {
+            System.out.println("Error: " + error.getMessage());
+        } finally {
+            scnr.close();
+        }
+    }
+}
